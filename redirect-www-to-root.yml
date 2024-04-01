@@ -34,7 +34,7 @@ Resources:
           - !Sub "www.${DomainName}"
         Origins:
           - Id: S3-RedirectOrigin
-            DomainName: !GetAtt RedirectBucket.WebsiteURL
+            DomainName:  !Select [1, !Split ["http://", !GetAtt RedirectBucket.WebsiteURL]]
             CustomOriginConfig:
               HTTPPort: 80
               HTTPSPort: 443
