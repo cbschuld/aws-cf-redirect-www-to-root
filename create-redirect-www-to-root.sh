@@ -65,7 +65,7 @@ if [[ "$confirmation" =~ ^[Yy][Ee]?[Ss]?$ ]]; then
   --template-body file://redirect-www-to-root-template.yml \
   --parameters \
   ParameterKey=DomainName,ParameterValue="$domain" \
-  ParameterKey=HostedZoneID,ParameterValue="$hosted_zone_id" \
+  ParameterKey=HostedZoneId,ParameterValue="$hosted_zone_id" \
   --region "$region" \
   --profile="$profile"
 
