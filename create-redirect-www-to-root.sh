@@ -28,7 +28,7 @@ while [ $valid_domain -eq 0 ]; do
     fi
 done
 
-# Fetch HostedZoneId
+# Fetch HostedZoneID
 hosted_zone_id=$(aws route53 list-hosted-zones-by-name --profile="$profile" --region "$region" | \
 jq --arg name "$domain." -r '.HostedZones | .[] | select(.Name=="\($name)") | .Id')
 hosted_zone_id=${hosted_zone_id#/hostedzone/}  # Remove '/hostedzone/' prefix
@@ -65,7 +65,7 @@ if [[ "$confirmation" =~ ^[Yy][Ee]?[Ss]?$ ]]; then
   --template-body file://redirect-www-to-root-template.yml \
   --parameters \
   ParameterKey=DomainName,ParameterValue="$domain" \
-  ParameterKey=HostedZoneId,ParameterValue="$hosted_zone_id" \
+  ParameterKey=HostedZoneID,ParameterValue="$hosted_zone_id" \
   --region "$region" \
   --profile="$profile"
 

@@ -34,7 +34,7 @@ read profile
 echo "Enter Domain:"
 read domain
 
-# Fetch HostedZoneId
+# Fetch HostedZoneID
 aws route53 list-hosted-zones-by-name --profile=$profile |
 jq --arg name $domain \
 -r '.HostedZones | .[] | select(.Name=="\($name)") | .Id'
