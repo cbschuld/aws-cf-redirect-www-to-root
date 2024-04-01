@@ -5,7 +5,7 @@ Parameters:
   DomainName:
     Type: String
     Description: The primary domain name (e.g., mydomain.com)
-  HostedZoneID:
+  HostedZoneId:
     Type: String
     Description: The Route 53 Hosted Zone ID for the DomainName
 
@@ -25,7 +25,7 @@ Resources:
       ValidationMethod: DNS
       DomainValidationOptions:
         - DomainName: !Sub "www.${DomainName}"
-          HostedZoneID: !Ref HostedZoneID
+          HostedZoneId: !Ref HostedZoneId
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -54,13 +54,13 @@ Resources:
   Route53Record:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneID: !Ref HostedZoneID
+      HostedZoneId: !Ref HostedZoneId
       RecordSets:
         - Name: !Sub "www.${DomainName}."
           Type: A
           AliasTarget:
             DNSName: !GetAtt CloudFrontDistribution.DomainName
-            HostedZoneID: Z2FDTNDATAQYW2 # CloudFront's Hosted Zone ID
+            HostedZoneId: Z2FDTNDATAQYW2 # CloudFront's Hosted Zone ID
           Weight: 1
           SetIdentifier: "wwwRedirect"
           Failover: PRIMARY
