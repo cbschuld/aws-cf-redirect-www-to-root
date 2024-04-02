@@ -11,7 +11,7 @@ This repository provides an AWS CloudFormation Template to construct a CloudFron
 You can download the automated script for this repo and run it yourself for your deployment:
 
 ```sh
-curl -s https://raw.githubusercontent.com/cbschuld/aws-cf-redirect-www-to-root/main/create-redirect-www-to-root.sh | bash
+curl -s https://raw.githubusercontent.com/cbschuld/aws-cf-redirect-www-to-root/main/create-redirect-www-to-root.sh > /tmp/create-redirect-www-to-root.sh && bash /tmp/create-redirect-www-to-root.sh && rm /tmp/create-redirect-www-to-root.sh
 ```
 
 ## Prerequisites for the Manual Usage
